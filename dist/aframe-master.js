@@ -75313,13 +75313,13 @@ window.Promise = window.Promise || _dereq_('promise-polyfill');
 // Check before the polyfill runs.
 window.hasNativeWebVRImplementation = !!window.navigator.getVRDisplays || !!window.navigator.getVRDevices;
 
-window.WebVRConfig = window.WebVRConfig || {
+var WebVRPolyfill = _dereq_('webvr-polyfill');
+window.webvrpolyfill = new WebVRPolyfill({
   BUFFER_SCALE: 1,
   CARDBOARD_UI_DISABLED: true,
-  ROTATE_INSTRUCTIONS_DISABLED: true,
-  TOUCH_PANNER_DISABLED: true,
-  MOUSE_KEYBOARD_CONTROLS_DISABLED: true
-};
+  ROTATE_INSTRUCTIONS_DISABLED: true
+});
+
 
 // Workaround for iOS Safari canvas sizing issues in stereo (webvr-polyfill/issues/102).
 // Only for iOS on versions older than 10.
@@ -75370,7 +75370,7 @@ _dereq_('./core/a-mixin');
 _dereq_('./extras/components/');
 _dereq_('./extras/primitives/');
 
-console.log('A-Frame Version: 0.7.1 (Date 24-03-2018, Commit #bf5c391)');
+console.log('A-Frame Version: 0.7.1 (Date 24-03-2018, Commit #24a44f6)');
 console.log('three Version:', pkg.dependencies['three']);
 console.log('WebVR Polyfill Version:', pkg.dependencies['webvr-polyfill']);
 
